@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Space Debris Monitoring Dashboard - Real-time tracking and analysis of orbital debris">
+    <meta name="theme-color" content="#0b0d17">
+
+    <!-- Title -->
+    <title>Space Debris Monitoring Dashboard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Star Field Background -->
+    <div class="star-field" id="starField"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="header-title">🛰️ Space Debris Monitoring</h1>
+            <p class="header-subtitle">Real-Time Orbital Debris Analysis & Risk Assessment</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Dashboard Grid Section -->
+        <section>
+            <div class="dashboard-grid">
+                <!-- Chart 1: Yearly Trend -->
+                <div class="chart-container">
+                    <h3>Debris Objects Over Time</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="yearChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Top Countries -->
+                <div class="chart-container">
+                    <h3>Debris by Country (Top 10)</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="countryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 3: Orbit Categories -->
+                <div class="chart-container">
+                    <h3>Distribution by Orbit Type</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="orbitChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 4: Risk Assessment -->
+                <div class="chart-container">
+                    <h3>Risk Score by Orbit</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section style="text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid rgba(0, 217, 255, 0.1);">
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                Last Updated: <span id="lastUpdated">Loading...</span> | 
+                Data Source: Space Debris Database
+            </p>
+        </section>
+    </main>
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+
+    <!-- Dashboard JavaScript -->
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+
+    <!-- Star Field Generation Script -->
+    <script>
+        // Generate random star field
+        function generateStarField() {
+            const starField = document.getElementById('starField');
+            const starCount = window.innerWidth > 1024 ? 100 : 50;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.opacity = Math.random() * 0.5 + 0.3;
+                starField.appendChild(star);
+            }
+        }
+
+        // Initialize on load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', generateStarField);
+        } else {
+            generateStarField();
+        }
+
+        // Update last updated time
+        const now = new Date();
+        document.getElementById('lastUpdated').textContent = now.toLocaleString();
+    </script>
+</body>
+</html>
