@@ -136,6 +136,53 @@ function Dashboard() {
           </div>
         )}
       </div>
+
+      {/* Power BI Dashboard Download Section */}
+      <div className="powerbi-section">
+        <div className="powerbi-card">
+          <h2>📊 Advanced Power BI Dashboard</h2>
+          <p>Unlock the full potential of your space debris data. Download the interactive Power BI dashboard to explore detailed analytics, apply custom filters, and discover deeper insights with drill-down capabilities.</p>
+          
+          <div className="features-grid">
+            <div className="feature-item">
+              <span className="feature-icon">🔍</span>
+              <p>Smart Filtering</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">📈</span>
+              <p>Advanced Charts</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🎯</span>
+              <p>Cross Analysis</p>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">📊</span>
+              <p>Data Export</p>
+            </div>
+          </div>
+
+          <div className="download-section">
+            <h4>🚀 Getting Started</h4>
+            <ol className="steps-list">
+              <li><strong>Click to download</strong> the SpaceDebris.pbix file below</li>
+              <li><strong>Install Power BI Desktop</strong> if you haven't already (<a href="https://powerbi.microsoft.com/desktop" target="_blank" rel="noopener noreferrer">Download free here</a>)</li>
+              <li><strong>Open the .pbix file</strong> with Power BI Desktop</li>
+              <li><strong>Explore &amp; analyze</strong> with interactive slicers and filters</li>
+              <li><strong>Export charts &amp; data</strong> as needed for reports</li>
+            </ol>
+
+            <a 
+              href="/SpaceDebris.pbix" 
+              download="SpaceDebris.pbix"
+              className="btn-powerbi-download"
+            >
+              📥 Download Power BI Dashboard
+            </a>
+            <p className="file-size">📦 File size: ~2-5 MB • Compatible with Power BI Desktop</p>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
